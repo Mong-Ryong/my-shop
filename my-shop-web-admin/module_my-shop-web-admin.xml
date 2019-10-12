@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_my-shop-web-admin" default="compile.module.my-shop-web-admin">
+  <dirname property="module.my-shop-web-admin.basedir" file="${ant.file.module_my-shop-web-admin}"/>
+  
+  <property name="module.jdk.home.my-shop-web-admin" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.my-shop-web-admin" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.my-shop-web-admin" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.my-shop-web-admin" value="-encoding UTF-8 -source 12 -target 12 ${compiler.args}"/>
+  
+  <property name="my-shop-web-admin.output.dir" value="${module.my-shop-web-admin.basedir}/target/classes"/>
+  <property name="my-shop-web-admin.testoutput.dir" value="${module.my-shop-web-admin.basedir}/target/test-classes"/>
+  
+  <path id="my-shop-web-admin.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="my-shop-web-admin.module.production.classpath">
+    <path refid="${module.jdk.classpath.my-shop-web-admin}"/>
+    <path refid="library.maven:_org.springframework:spring-test:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.3.17.release.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+    <path refid="library.maven:_junit:junit:4.12.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <pathelement location="${my-shop-domain.output.dir}"/>
+    <pathelement location="${my-shop-commons.output.dir}"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.25.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.25.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.25.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.7.25.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.5.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.3.17.release.classpath"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.1.0.classpath"/>
+    <path refid="library.maven:_javax.servlet:jstl:1.2.classpath"/>
+    <path refid="library.maven:_com.alibaba:druid:1.1.6.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.46.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis:3.4.6.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis-spring:1.3.1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.3.17.release.classpath"/>
+  </path>
+  
+  <path id="my-shop-web-admin.runtime.production.module.classpath">
+    <pathelement location="${my-shop-web-admin.output.dir}"/>
+    <path refid="library.maven:_org.springframework:spring-test:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.3.17.release.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+    <path refid="library.maven:_junit:junit:4.12.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="my-shop-domain.runtime.production.module.classpath"/>
+    <path refid="my-shop-commons.runtime.production.module.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.25.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.25.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.25.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.7.25.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.5.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.3.17.release.classpath"/>
+    <path refid="library.maven:_javax.servlet:jstl:1.2.classpath"/>
+    <path refid="library.maven:_com.alibaba:druid:1.1.6.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.46.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis:3.4.6.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis-spring:1.3.1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.3.17.release.classpath"/>
+  </path>
+  
+  <path id="my-shop-web-admin.module.classpath">
+    <path refid="${module.jdk.classpath.my-shop-web-admin}"/>
+    <pathelement location="${my-shop-web-admin.output.dir}"/>
+    <path refid="library.maven:_org.springframework:spring-test:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.3.17.release.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+    <path refid="library.maven:_junit:junit:4.12.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <pathelement location="${my-shop-domain.testoutput.dir}"/>
+    <pathelement location="${my-shop-domain.output.dir}"/>
+    <pathelement location="${my-shop-commons.testoutput.dir}"/>
+    <pathelement location="${my-shop-commons.output.dir}"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.25.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.25.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.25.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.7.25.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.5.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.3.17.release.classpath"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.1.0.classpath"/>
+    <path refid="library.maven:_javax.servlet:jstl:1.2.classpath"/>
+    <path refid="library.maven:_com.alibaba:druid:1.1.6.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.46.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis:3.4.6.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis-spring:1.3.1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.3.17.release.classpath"/>
+  </path>
+  
+  <path id="my-shop-web-admin.runtime.module.classpath">
+    <pathelement location="${my-shop-web-admin.testoutput.dir}"/>
+    <pathelement location="${my-shop-web-admin.output.dir}"/>
+    <path refid="library.maven:_org.springframework:spring-test:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.3.17.release.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+    <path refid="library.maven:_junit:junit:4.12.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="my-shop-domain.runtime.module.classpath"/>
+    <path refid="my-shop-commons.runtime.module.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.25.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.7.25.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.25.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.7.25.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.5.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.3.17.release.classpath"/>
+    <path refid="library.maven:_javax.servlet:javax.servlet-api:3.1.0.classpath"/>
+    <path refid="library.maven:_javax.servlet:jstl:1.2.classpath"/>
+    <path refid="library.maven:_com.alibaba:druid:1.1.6.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.46.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis:3.4.6.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis-spring:1.3.1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:4.3.17.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.3.17.release.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.my-shop-web-admin">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.my-shop-web-admin">
+    <patternset refid="excluded.from.module.my-shop-web-admin"/>
+  </patternset>
+  
+  <path id="my-shop-web-admin.module.sourcepath">
+    <dirset dir="${module.my-shop-web-admin.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="my-shop-web-admin.module.test.sourcepath">
+    <dirset dir="${module.my-shop-web-admin.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.my-shop-web-admin" depends="compile.module.my-shop-web-admin.production,compile.module.my-shop-web-admin.tests" description="Compile module my-shop-web-admin"/>
+  
+  <target name="compile.module.my-shop-web-admin.production" depends="register.custom.compilers,compile.module.my-shop-domain,compile.module.my-shop-commons" description="Compile module my-shop-web-admin; production classes">
+    <mkdir dir="${my-shop-web-admin.output.dir}"/>
+    <javac2 destdir="${my-shop-web-admin.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.my-shop-web-admin}/javac">
+      <compilerarg line="${compiler.args.my-shop-web-admin}"/>
+      <bootclasspath refid="my-shop-web-admin.module.bootclasspath"/>
+      <classpath refid="my-shop-web-admin.module.production.classpath"/>
+      <src refid="my-shop-web-admin.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.my-shop-web-admin"/>
+    </javac2>
+    
+    <copy todir="${my-shop-web-admin.output.dir}">
+      <fileset dir="${module.my-shop-web-admin.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.my-shop-web-admin.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.my-shop-web-admin.tests" depends="register.custom.compilers,compile.module.my-shop-web-admin.production" description="compile module my-shop-web-admin; test classes" unless="skip.tests">
+    <mkdir dir="${my-shop-web-admin.testoutput.dir}"/>
+    <javac2 destdir="${my-shop-web-admin.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.my-shop-web-admin}/javac">
+      <compilerarg line="${compiler.args.my-shop-web-admin}"/>
+      <bootclasspath refid="my-shop-web-admin.module.bootclasspath"/>
+      <classpath refid="my-shop-web-admin.module.classpath"/>
+      <src refid="my-shop-web-admin.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.my-shop-web-admin"/>
+    </javac2>
+    
+    <copy todir="${my-shop-web-admin.testoutput.dir}">
+      <fileset dir="${module.my-shop-web-admin.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.my-shop-web-admin" description="cleanup module">
+    <delete dir="${my-shop-web-admin.output.dir}"/>
+    <delete dir="${my-shop-web-admin.testoutput.dir}"/>
+  </target>
+</project>

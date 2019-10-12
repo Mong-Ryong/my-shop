@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_my-shop-domain" default="compile.module.my-shop-domain">
+  <dirname property="module.my-shop-domain.basedir" file="${ant.file.module_my-shop-domain}"/>
+  
+  <property name="module.jdk.home.my-shop-domain" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.my-shop-domain" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.my-shop-domain" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.my-shop-domain" value="-encoding UTF-8 -source 12 -target 12 ${compiler.args}"/>
+  
+  <property name="my-shop-domain.output.dir" value="${module.my-shop-domain.basedir}/target/classes"/>
+  <property name="my-shop-domain.testoutput.dir" value="${module.my-shop-domain.basedir}/target/test-classes"/>
+  
+  <path id="my-shop-domain.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="my-shop-domain.module.production.classpath">
+    <path refid="${module.jdk.classpath.my-shop-domain}"/>
+  </path>
+  
+  <path id="my-shop-domain.runtime.production.module.classpath">
+    <pathelement location="${my-shop-domain.output.dir}"/>
+  </path>
+  
+  <path id="my-shop-domain.module.classpath">
+    <path refid="${module.jdk.classpath.my-shop-domain}"/>
+    <pathelement location="${my-shop-domain.output.dir}"/>
+  </path>
+  
+  <path id="my-shop-domain.runtime.module.classpath">
+    <pathelement location="${my-shop-domain.testoutput.dir}"/>
+    <pathelement location="${my-shop-domain.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.my-shop-domain">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.my-shop-domain">
+    <patternset refid="excluded.from.module.my-shop-domain"/>
+  </patternset>
+  
+  <path id="my-shop-domain.module.sourcepath">
+    <dirset dir="${module.my-shop-domain.basedir}">
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.my-shop-domain" depends="compile.module.my-shop-domain.production,compile.module.my-shop-domain.tests" description="Compile module my-shop-domain"/>
+  
+  <target name="compile.module.my-shop-domain.production" depends="register.custom.compilers" description="Compile module my-shop-domain; production classes">
+    <mkdir dir="${my-shop-domain.output.dir}"/>
+    <javac2 destdir="${my-shop-domain.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.my-shop-domain}/javac">
+      <compilerarg line="${compiler.args.my-shop-domain}"/>
+      <bootclasspath refid="my-shop-domain.module.bootclasspath"/>
+      <classpath refid="my-shop-domain.module.production.classpath"/>
+      <src refid="my-shop-domain.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.my-shop-domain"/>
+    </javac2>
+    
+    <copy todir="${my-shop-domain.output.dir}">
+      <fileset dir="${module.my-shop-domain.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.my-shop-domain.tests" depends="register.custom.compilers,compile.module.my-shop-domain.production" description="compile module my-shop-domain; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.my-shop-domain" description="cleanup module">
+    <delete dir="${my-shop-domain.output.dir}"/>
+    <delete dir="${my-shop-domain.testoutput.dir}"/>
+  </target>
+</project>
